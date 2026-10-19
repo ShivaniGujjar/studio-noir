@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { gsap, reduce, Preloader, Cursor, Chars, Scrub, Reveal, Marquee, Magnetic, ScrollMeter, WarpDefs, warp, ScrollTrigger, useSmoothScroll } from "./motion";
+import { gsap, reduce, Preloader, Cursor, Chars, Scrub, Reveal, Magnetic, ScrollMeter, WarpDefs, warp, ScrollTrigger, useSmoothScroll } from "./motion";
 import "./Premium.css";
 import { site, projects, story } from "./data/siteData";
 import { Num, Torn, Sheet, Services, Enquiry, Lightbox } from "./components/Extras";
-import Reel from "./components/Reel";
+import NightReel from "./components/NightReel";
+import Web from "./components/Web";
 
 const wrap = "mx-auto w-full max-w-[1320px] px-6 md:px-10";
 
 const toc = [
   ["Selected work", "#work"],
-  ["The reel", "#reel"],
+  ["Night walk and reel", "#reel"],
   ["Contact sheet", "#sheet"],
   ["How I got here", "#about"],
   ["What I shoot", "#services"],
@@ -45,7 +46,7 @@ function Hero({ ready }) {
   }, [ready]);
   return (
     <section id="top" className="relative min-h-[100svh] overflow-hidden pt-24">
-      <div className="hero-par absolute inset-x-0 -top-[10%] h-[100%]"><img src={site.heroImage} alt="" className="hero-img h-full w-full object-cover grayscale contrast-125 brightness-50" /></div>
+      <div className="hero-par absolute inset-x-0 -top-[10%] h-[120%]"><img src={site.heroImage} alt="" className="hero-img h-full w-full object-cover grayscale contrast-125 brightness-50" /></div>
       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-transparent to-[#0a0c10]/60" />
 
       <div className={`${wrap} relative grid gap-10 pb-20 md:grid-cols-12`}>
@@ -156,8 +157,8 @@ function About() {
             </Reveal>
           ))}
         </ol>
-        <p className="mono mt-16 text-xs text-[var(--mute)]">Worked with</p>
-        <div className="mt-6"><Marquee items={site.clients} /></div>
+        <p className="mono mt-16 text-xs text-[var(--mute)]">Worked with. Run your cursor through the web.</p>
+        <div className="mt-6"><Web items={site.clients} /></div>
       </div>
     </section>
   );
@@ -205,7 +206,7 @@ export default function App() {
         <Hero ready={ready} />
         <Intro />
         <Work onOpen={setOpen} />
-        <Reel />
+        <NightReel />
         <Sheet />
         <About />
         <Services />

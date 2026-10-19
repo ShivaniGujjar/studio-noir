@@ -78,3 +78,16 @@ body{overflow-x:clip}
 .sticker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);animation:ping 2s infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(229,50,45,.55)}70%,100%{box-shadow:0 0 0 8px rgba(229,50,45,0)}}
 @media (prefers-reduced-motion:reduce){.sticker::before{animation:none}}
+
+/* ---- contact sheet: loupe, grease-pencil marks, focus dimming ---- */
+.loupe{width:160px;height:160px;overflow:hidden;border-radius:50%;border:2px solid var(--paper);box-shadow:0 10px 40px rgba(0,0,0,.6);opacity:0;scale:.6;transition:opacity .2s,scale .25s}
+.tile{transition:transform .5s cubic-bezier(.2,.7,.2,1);position:relative}
+.sheet-fig:hover .tile{transform:rotate(0deg) scale(1.025)}
+.sheet-fig{transition:filter .45s}
+.sheet-grid:has(.sheet-fig:hover) .sheet-fig:not(:hover){filter:brightness(.35) saturate(.5)}
+.mark{position:absolute;left:-8px;top:-8px;width:calc(100% + 16px);height:calc(100% + 16px);pointer-events:none;overflow:visible}
+.mark path{fill:none;stroke:var(--red);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw .8s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.stamp{position:absolute;left:12px;bottom:12px;color:var(--red);border:2px solid var(--red);background:rgba(0,0,0,.55);padding:.2rem .5rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;transform:rotate(-6deg);animation:pop .35s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{opacity:0;transform:rotate(-6deg) scale(1.8)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.mark path{animation:none;stroke-dashoffset:0}.stamp{animation:none}}
