@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #efe9dc;
+  --ink: #111;
+  --dark: #2b2b2b;
+  --accent: #e63b2e;
+  --font-display: "Playfair Display", serif;   /* swap for Bodoni Moda if you want sharper contrast */
+  --font-mono: "Space Mono", monospace;
+}
+.band { padding: 6rem 5vw; position: relative; overflow: hidden; }
+.band--light { background: var(--paper); color: var(--ink); }
+.band--dark  { background: var(--dark);  color: var(--paper); }
+.ghost {
+  position: absolute; font-family: var(--font-display);
+  font-size: 40vw; line-height: 1; opacity: .06;
+  pointer-events: none; right: -3vw; top: 0;
+}
+.italic-accent { font-style: italic; color: var(--accent); }
